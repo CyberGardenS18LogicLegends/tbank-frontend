@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <script>
+        // Функция для проверки совпадения паролей
+        function validatePasswords() {
+            // Получаем значения паролей
+            var password = document.getElementsByName("newPasName")[0].value;
+            var confirmPassword = document.getElementsByName("newPasNameRep")[0].value;
+
+            // Проверка на совпадение паролей
+            if (password !== confirmPassword) {
+                alert("Пароли не совпадают. Пожалуйста, попробуйте снова.");
+                return false;  // Предотвращаем отправку формы
+            }
+            return true;  // Пароли совпадают, форма будет отправлена
+        }
+    </script>
+</head>
+<body>
+<main class="common">
+    <div class="scroll-container">
+        <ul class="container">
+            <li>
+                <ul class="content_zone_info">
+                    <li>
+                        <img class="content_zone_logo" src="/static/images/logo.svg" alt="Logo">
+                    </li>
+                    <li>
+                        <p class="content_zone_text">
+                            Ваш <br>
+                            финансовый <br>
+                            помощник <br>
+                        </p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <form class="reg_form_conteiner" id="register_form" method="post" onsubmit="return validatePasswords()">
+                    <h1 class="form_title">Регистрация</h1>
+                    <div class="reg_form_fields">
+                        <div class="form_field">
+                            <input name="newLoginName" type="text" placeholder="Придумайте логин" required>
+                        </div>
+                        <div class="form_field">
+                            <input name="newPasName" type="password" placeholder="Придумайте пароль" required>
+                        </div>
+                        <div class="form_field">
+                            <input name="newPasNameRep" type="password" placeholder="Повторите пароль" required>
+                        </div>
+                    </div>
+                    <div class="form_buttons">
+                        <button class="button_login_register" type="submit">Зарегистрироваться</button>
+                    </div>
+                    <div class="form_yes_login">
+                        <a class="form_no_yes_login_reg_vopr" href="#">Есть аккаунт?</a>
+                        <a class="form_no_yes_login_reg" href="login.html">Войти</a>
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Comme-Black';
+    src: url('/static/fonts/Comme-Black.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat-Medium';
+    src: url('/static/fonts/Montserrat-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat-SemiBold';
+    src: url('/static/fonts/Montserrat-SemiBold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --Yellow_fonts: #FFDD2D;
+    --Grey_fon: #E8E8E8;
+    --Grey_field: #2F3135;
+    --White_font: #F5F7FA;
+    --Grey_font: #333333;
+}
+
+.empty {
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 50%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: aliceblue;
+    border-bottom: 0.1vh solid white;
+    background-color: var(--Grey_font);
+    height: 12vh;
+}
+
+.header_t_icone {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 15%;
+}
+
+.header_other {
+    display: flex;
+    width: 85%;
+    height: 100%;
+    justify-content: end;
+    align-items: center;
+}
+
+.notification-bell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5%;
+}
+
+.bell-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    flex: 1;
+    transition: transform 0.3s ease; /* Анимация плавного вращения */
+}
+
+.bell-btn:hover {
+    transform: rotate(20deg); /* Вращение при наведении */
+}
+
+.bell-btn img {
+    width: 90%; /* Увеличенная иконка */
+    transition: transform 0.3s ease; /* Плавная анимация без изменения цвета */
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    border: 0.3vh solid #f0c933;
+    border-radius: 25px;
+    width: 30vw;
+    height: 5vh;
+}
+
+.search-container input {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-size: 2.5vh;
+    flex: 1;
+    height: 100%;
+}
+
+.search-container input::placeholder {
+    color: #ccc;
+}
+
+.search-container-but {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    width: 7%;
+    margin: 0 3%;
+    height: 100%;
+}
+
+.search-container-img {
+    width: 100%;
+    height: 100%;
+}
+
+.user {
+    display: flex; /* Flexbox для удобного расположения элементов */
+    flex-direction: column; /* Размещаем элементы вертикально */
+    align-items: center; /* Выравниваем элементы по центру */
+    justify-content: center;
+    width: 5%; /* Задаём фиксированную ширину */
+}
+
+.user_avatar_img {
+    width: 60%; /* Ширина изображения */
+    margin-bottom: 0.1vh;
+    border-radius: 50%; /* Убираем округлость */
+}
+
+.avatar_name {
+    font-family: 'Montserrat-Medium', sans-serif;
+    color: var(--White_font); /* Цвет текста */
+    font-size: 0.8vw; /* Размер текста */
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    height: 88vh;
+}
+
+.sidebar {
+    width: 15%;
+    border-right: 0.1vh solid white;
+    background-color: var(--Grey_font);
+    height: 88vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.site_bar_menu_elements {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 18%;
+    height: 26%;
+    margin-top: 20%;
+    list-style: none;
+}
+
+.site_bar_menu_buttons {
+    font-family: 'Comme-Black', sans-serif;
+    font-size: 1.5vh;
+    width: 13vw;
+    height: 4vh;
+    background-color: #616161;
+    border-radius: 10px;
+    color: #FFFFFF;
+    border: none; /* Убираем рамку */
+    cursor: pointer; /* Указываем, что это кнопка */
+    transition: all 0.3s ease; /* Плавный переход для всех эффектов */
+    display: flex;
+    justify-content: flex-start; /* Выравнивание по левому краю */
+    align-items: center;
+    gap: 3px; /* Добавлен отступ между иконкой и текстом */
+    padding-left: 15px; /* Добавлен отступ слева */
+}
+
+.site_bar_menu_buttons.active {
+    background-color: #87CEEB;
+    color: #FFFFFF;
+}
+
+.site_bar_menu_buttons:hover {
+    background-color: var(--Yellow_fonts);
+    color: #333333;
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Изменения для изображения внутри кнопки */
+.site_bar_menu_buttons:hover img {
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(180deg); /* Иконка меняет цвет при наведении */
+}
+
+.site_bar_menu_buttons:active {
+    transform: scale(0.95);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    background-color: var(--Yellow_fonts);
+    color: #333333;
+}
+
+.site_bar_menu_buttons:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 85%;
+    background-color: #212121;
+}
+
+/* Увеличенные иконки */
+.site_bar_menu_buttons img {
+    width: 10%; /* Размер иконки в процентах от родительского элемента */
+    height: auto;
+    min-width: 4px; /* Минимальная ширина иконки */
+    min-height: 4px; /* Минимальная высота иконки */
+    filter: invert(0) sepia(0) saturate(0) hue-rotate(0deg); /* Изначальные стили для иконки */
+    transition: filter 0.3s ease;
+}
+
+
+.site_bar_menu_buttons:active img {
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(180deg); /* При нажатии иконка меняет цвет */
+}
+.site_bar_menu_buttons.active {
+    background-color: #87CEEB; /* Зеленый цвет для активной кнопки */
+    color: white; /* Белый текст */
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Войти в аккаунт</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <script>
+        // Функция для проверки наличия логина и пароля
+        function validateLoginForm() {
+            // Получаем значения логина и пароля
+            var loginName = document.getElementsByName("loginName")[0].value;
+            var passWordName = document.getElementsByName("passWordName")[0].value;
+
+            // Проверка на пустые поля
+            if (loginName === "" || passWordName === "") {
+                alert("Пожалуйста, заполните все поля.");
+                return false;  // Предотвращаем отправку формы
+            }
+            return true;  // Все поля заполнены, форма будет отправлена
+        }
+    </script>
+</head>
+<body>
+<main class="common">
+    <div class="scroll-container">
+        <ul class="container">
+            <li>
+                <ul class="content_zone_info">
+                    <li>
+                        <img class="content_zone_logo" src="/static/images/logo.svg" alt="Logo">
+                    </li>
+                    <li>
+                        <p class="content_zone_text">
+                            Ваш <br>
+                            финансовый <br>
+                            помощник <br>
+                        </p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <form class="login_form_conteiner" id="login_form" method="post" onsubmit="return validateLoginForm()">
+                    <h1 class="form_title">Войти в аккаунт</h1>
+                    <div class="form_fields">
+                        <div class="form_field">
+                            <input name="loginName" type="text" placeholder="Логин" required>
+                        </div>
+                        <div class="form_field">
+                            <input name="passWordName" type="password" placeholder="Пароль" required>
+                        </div>
+                    </div>
+                    <div class="form_buttons">
+                        <button class="button_login_register" type="submit">Войти</button>
+                        <div class="form_buttons_ili">или</div>
+                        <button class="button_T-ID">
+                            <img src="/static/images/icon_T-Bank.svg" alt="T-Bank" class="button-icon">Войти с T-ID
+                        </button>
+                    </div>
+                    <div class="form_no_login">
+                        <a class="form_no_yes_login_reg_vopr" href="#">Нет аккаунта?</a>
+                        <a class="form_no_yes_login_reg" href="register.html">Зарегистрируйтесь</a>
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </div>
+</main>
+</body>
+</html>

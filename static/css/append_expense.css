@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+@font-face {
+    font-family: 'Comme-Black';
+    src: url('/static/fonts/Comme-Black.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat-Medium';
+    src: url('/static/fonts/Montserrat-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat-SemiBold';
+    src: url('/static/fonts/Montserrat-SemiBold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.container{
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    width: 34vw;
+    height: 80vh;
+    background-color: #333333;
+    border-radius: 15px;
+}
+.container_head{
+    color: #FFFFFF;
+    font-family: 'Montserrat-SemiBold', sans-serif;
+    font-size: 2.6vh;
+    padding-top:5%;
+    padding-bottom: 7%;
+}
+.container_head2{
+    color: #FFFFFF;
+    font-family: 'Montserrat-SemiBold', sans-serif;
+    font-size: 1.8vh;
+    padding-bottom: 7%;
+}
+.container_categoryes{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Три колонки */
+    width: 90%;
+    height: 20%;
+}
+.category{
+    width: 96%;
+    height: 92%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6vh;
+    color: #FFFFFF;
+    border-radius: 10px;
+}
+
+.category {
+    background-color: #FFDD2D;
+    color: #000000;
+}
+
+.container_head3 {
+    margin-left: 5%;
+    align-self: start;
+    color: #FFFFFF;
+    font-family: 'Montserrat-SemiBold', sans-serif;
+    font-size: 1.5vh;
+    padding-top:6%;
+}
+.inputWaste{
+    margin-top: 2%;
+    margin-left: 5%;
+    width: 88%;
+    height: 5%;
+    align-self: start;
+    background-color: #616161;
+    color: #FFFFFF;
+    padding: 5%;
+    border-radius: 10px;
+}
+.appendWaste {
+    transition: background-color 0.5s ease, color 0.5s ease;
+    width: 70%;
+    height: 9%;
+    border-radius: 15px;
+    color: #000000;
+    font-family: 'Montserrat-SemiBold', sans-serif;
+    font-size: 1.8vh;
+    background-color: #FFDD2D;
+    display: flex;
+    align-items: center; /* Центрирование текста кнопки по вертикали */
+    justify-content: center; /* Центрирование текста кнопки по горизонтали */
+    margin-top: auto; /* Перемещение кнопки вниз */
+    margin-bottom: 5%;
+}
+.category, .category-extra, .inputWaste, .appendWaste {
+    cursor: pointer;
+}
+
+
+.category:active, .category-extra:active {
+    transform: scale(1.06);
+}
+
+
+.category, .category-extra, .inputWaste {
+    border: none;
+}
+
+
+.category:focus {
+    outline: none;
+    background-color: #FFFFFF;
+    color: #000000;
+}
+.inputWaste:focus, .appendWaste:focus{
+    outline: none;
+}
+
+.appendWaste:active {
+    transform: scale(1.1);
+}
+

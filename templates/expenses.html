@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расходы</title>
+    <link rel="stylesheet" href="/static/css/styles_main.css">
+    <link rel="stylesheet" href="/static/css/ie.css">
+    <link rel="stylesheet" href="/static/css/append_expense.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="empty"></div>
+    <header>
+        <div class="header_t_icone">
+            <img src="/static/images/logo_white.svg" style="width: 50%;">
+        </div>
+        <div class="header_other">
+            <form class="search-container">
+                <button class="search-container-but"><img class="search-container-img" src="/static/images/loupe-search.svg"></button>
+                <input type="text" placeholder="Поиск">
+            </form>
+
+            <div class="notification-bell">
+                <button class="bell-btn"><img src="/static/images/bell-search.svg" alt="Уведомления"></button>
+            </div>
+            <a class="user">
+                <img src="/static/images/dicapro.jpg" alt="User Avatar" class="user_avatar_img" />
+                <span id="responsive-text" class="avatar_name">Dicaprio</span>
+            </a>
+        </div>
+    </header>
+    <main>
+        <div class="sidebar">
+            <ul class="site_bar_menu_elements">
+                <li>
+                    <button class="site_bar_menu_buttons" onclick="goToPage('/home', this)">
+                        <img src="/static/images/home-icon.svg" alt="Главная" class="icon">Главная страница
+                    </button>
+                </li>
+                <li>
+                    <button class="site_bar_menu_buttons" onclick="goToPage('/expenses', this)">
+                        <img src="/static/images/rashod.svg" alt="Расходы" class="icon">Расходы
+                    </button>
+                </li>
+                <li>
+                    <button class="site_bar_menu_buttons" onclick="goToPage('/income', this)">
+                        <img src="/static/images/dohod.svg" alt="Доходы" class="icon">Доходы
+                    </button>
+                </li>
+                <li>
+                    <button class="site_bar_menu_buttons" onclick="goToPage('/recommendations', this)">
+                        <img src="/static/images/recomends.svg" alt="Рекомендации" class="icon">Рекомендации
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="content">
+            <div class="container">
+                <p class="container_head">Добавить расходы</p>
+                <p class="container_head2">Выберите категорию</p>
+                <div class="container_categoryes">
+                    <button class="category" data-category="Связь">Связь</button>
+                    <button class="category" data-category="Супермаркеты">Супермаркеты</button>
+                    <button class="category" data-category="Одежда">Одежда</button>
+                    <button class="category" data-category="Переводы">Переводы</button>
+                    <button class="category" data-category="Фастфуд">Фастфуд</button>
+                    <button class="category" data-category="Образование">Образование</button>
+                    <button class="category" data-category="Топливо">Топливо</button>
+                    <button class="category" data-category="Ж/Д билеты">Ж/Д билеты</button>
+                    <button class="category" data-category="Медицина">Медицина</button>
+                    <button class="category" data-category="Добавить">Новая категория</button>
+                    <button class="category" data-category="Переводы">Переводы</button>
+                    <button class="category" data-category="Соц выплаты">Соц выплаты</button>
+                    <button class="category" data-category="Зарплата">Зарплата</button>
+                    <button class="category" data-category="Ж/Д билеты">Ж/Д билеты</button>
+                </div>
+                <p class="container_head3">Введите сумму:</p>
+                <input class="inputWaste" name="newWaste" type="text">
+                <button class="appendWaste">Добавить</button>
+            </div>
+            <div class="diag">
+                <canvas id="incomeChart"></canvas>
+            </div>
+            <div class="income-details">
+                <div class="income-header">
+                    <span>
+                        <img class="trso" src="/static/images/40.png">
+                        Ноябрь
+                        <img class="trso" src="/static/images/39.png">
+                    </span>
+                    <span>16700.00 ₽</span>
+                </div>
+                <div class="income-list">
+                    <div class="income-list-day">
+                        <div class="income-main-item">
+                           <span>Сегодня</span>
+                        </div>
+                        <div class="income-item">
+                            <img class="income-item-icon" src="/static/images/dicapro.jpg">
+                            <div class="income-pars">
+                                <span class="income-span-name">Алексей Г.</span>
+                                <span class="income-span-category">Переводы</span>
+                            </div>
+                            <div class="income-pars" style="margin-left: auto;">
+                                <span class="income-span-name">+3000 ₽</span>
+                                <span class="income-span-time">11:30</span>
+                            </div>
+                        </div>
+                        <div class="income-item">
+                            <img class="income-item-icon" src="/static/images/dicapro.jpg">
+                            <div class="income-pars">/static
+                                <span class="income-span-name">Алексей Г.</span>
+                                <span class="income-span-category">Переводы</span>
+                            </div>
+                            <div class="income-pars" style="margin-left: auto;">
+                                <span class="income-span-name">+3000 ₽</span>
+                                <span class="income-span-time">11:30</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="add-income-btn">Добавить расходы</button>
+            </div>
+        </div>
+    </main>
+</body>
+<script>
+    const ctx = document.getElementById('incomeChart').getContext('2d');
+
+    const incomeData = {
+        labels: ['Одежда', 'Супермаркеты'],
+        datasets: [{
+            data: [70, 30],
+            backgroundColor: ['rgba(54, 162, 235, 0.6)', 'rgba(75, 192, 192, 0.6)'],
+            borderWidth: 0,
+        }]
+    };
+
+    const options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: {
+                    color: 'white',
+                    font: {
+                        size:15
+                    }
+                }
+            },
+            title: {
+                display: true,
+                text: 'Расходы',
+                color: 'white',
+                font: {
+                    size: 30
+                }
+            }
+        },
+        cutout: '80%'
+    };
+
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: incomeData,
+        options: options
+    });
+
+    // Получаем элементы
+    const addExpenseButton = document.querySelector('.add-income-btn');
+    const container = document.querySelector('.container');
+    const empty = document.querySelector('.empty');
+
+    // Добавляем обработчик события на кнопку
+    addExpenseButton.addEventListener('click', () => {
+        // Меняем стили display
+        container.style.display = 'flex';
+        empty.style.display = 'block';
+    });
+    empty.addEventListener('click', () => {
+        // Меняем стили display
+        container.style.display = 'none';
+        empty.style.display = 'none';
+    });
+    function goToPage(url, button) {
+        // Удаляем класс 'active' с других кнопок
+        const buttons = document.querySelectorAll('.site_bar_menu_buttons');
+        buttons.forEach(btn => btn.classList.remove('active'));
+
+        // Добавляем класс 'active' на текущую кнопку
+        button.classList.add('active');
+
+        // Переход на страницу
+        window.location.href = url; // Переход через полный путь
+    }
+
+    // Для выделения активной кнопки при загрузке
+    document.addEventListener("DOMContentLoaded", () => {
+        const currentUrl = window.location.pathname; // Текущий URL
+        const buttons = document.querySelectorAll('.site_bar_menu_buttons');
+
+        buttons.forEach(button => {
+            const link = button.getAttribute('onclick').match(/'([^']+)'/)[1]; // Извлекаем URL из onclick
+            if (currentUrl === link) {
+                button.classList.add('active'); // Добавляем класс 'active' на текущую кнопку
+            }
+        });
+    });
+
+</script>
+</html>

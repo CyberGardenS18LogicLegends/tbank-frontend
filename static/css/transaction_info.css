@@ -1,0 +1,210 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: 'Comme-Black';
+    src: url('/static/fonts/Comme-Black.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat-Medium';
+    src: url('/static/fonts/Montserrat-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat-SemiBold';
+    src: url('/static/fonts/Montserrat-SemiBold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+.container{
+    width: 386px;
+    height: 470px;
+    background-color: #333333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+}
+.data_transaction{
+    color: #FFFFFF;
+    font-family: 'Comme-Black', sans-serif;
+    font-size: 16px;
+    margin-top: 3%;
+}
+.mini_logo{
+    margin-top: 6%;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid #FFDD2D;
+}
+.name{
+    font-family: 'Comme-Black', sans-serif;
+    font-size: 16px;
+    margin-top: 4%;
+    color: #FFFFFF;
+}
+.name_transaction{
+    font-family: 'Comme-Black', sans-serif;
+    color: #FFFFFF;
+    font-size: 12px;
+    margin-top: 1%;
+    font-weight: lighter;
+}
+.sum_transaction{
+    font-family: 'Comme-Black', sans-serif;
+    font-size: 16px;
+    margin-top: 5%;
+    color: #0CB300;
+}
+.about_transaction{
+    font-family: 'Comme-Black', sans-serif;
+    font-size: 16px;
+    margin-top: 7%;
+    color: #FFFFFF;
+    align-self: start;
+    margin-left: 4%;
+}
+.card_element {
+    margin-top: 6%;
+    display: flex;
+    gap: 4%;
+    margin-left: 0; /* Убираем отступ слева */
+    justify-content: flex-start; /* Располагаем элементы внутри контейнера слева */
+    align-items: center; /* Выравниваем элементы по верхнему краю */
+    width: 100%; /* Убедимся, что контейнер занимает всю доступную ширину */
+}
+
+.card_element_image{
+    margin-left: 4%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #FFDD2D;
+}
+.card_type{
+    font-family: 'Comme-Black', sans-serif;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+.recvesits{
+    font-family: 'Comme-Black', sans-serif;
+    font-size: 16px;
+    margin-top: 8%;
+    color: #FFFFFF;
+    align-self: start;
+    margin-left: 4%;
+}
+.sender{
+    font-family: 'Comme-Black', sans-serif;
+    font-size: 12px;
+    margin-top: 5%;
+    color: #FFFFFF;
+    align-self: start;
+    margin-left: 4%;
+    font-weight: 300;
+}
+.name_sender{
+    font-family: 'Comme-Black', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 3%;
+    color: #FFFFFF;
+    align-self: start;
+    margin-left: 4%;
+}
+/* Модальное окно */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    z-index: 9999; /* Поверх всех элементов */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
+    padding-top: 50px; /* Отступ сверху для модального окна */
+    overflow: auto; /* Если окно слишком большое, будет прокручиваться */
+    transition: opacity 0.3s ease; /* Плавное исчезновение/появление */
+}
+
+/* Контент модального окна */
+.modal-content {
+    background-color: #333333;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px; /* Максимальная ширина */
+    color: white;
+}
+
+/* Кнопка закрытия */
+.close {
+    color: #FFDD2D;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+/* Стиль кнопки закрытия при наведении */
+.close:hover,
+.close:focus {
+    color: #FFDD2D;
+    text-decoration: none;
+}
+
+/* Заголовок модального окна */
+.modal-header {
+    font-family: 'Comme-Black', sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Основная информация в модальном окне */
+.modal-body {
+    font-family: 'Montserrat-Medium', sans-serif;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Стили для иконок внутри модального окна */
+.modal-body img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 1px solid #FFDD2D;
+}
+
+/* Контейнер для информации внутри модального окна */
+.modal-body .info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Контейнер для данных, которые отображаются в модальном окне */
+.modal-body .info-item span {
+    color: #FFFFFF;
+}
+
+/* Стиль для каждой информации */
+.modal-body .info-item .label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* Стиль для самой информации */
+.modal-body .info-item .value {
+    color: #FFDD2D;
+}
