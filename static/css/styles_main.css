@@ -93,7 +93,7 @@ header {
 }
 
 .bell-btn img {
-    width: 90%; /* Увеличенная иконка */
+    width: 50%; /* Увеличенная иконка */
     transition: transform 0.3s ease; /* Плавная анимация без изменения цвета */
 }
 
@@ -103,7 +103,7 @@ header {
     background-color: #333;
     border: 0.3vh solid #f0c933;
     border-radius: 25px;
-    width: 30vw;
+    width: 20vw;
     height: 5vh;
 }
 
@@ -197,8 +197,8 @@ main {
     display: flex;
     justify-content: flex-start; /* Выравнивание по левому краю */
     align-items: center;
-    gap: 3px; /* Добавлен отступ между иконкой и текстом */
-    padding-left: 15px; /* Добавлен отступ слева */
+    padding: 2%;
+    text-align: start;
 }
 
 .site_bar_menu_buttons.active {
@@ -230,7 +230,7 @@ main {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-.content {
+.content, .statistic {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -240,20 +240,14 @@ main {
 }
 
 /* Увеличенные иконки */
-.site_bar_menu_buttons img {
-    width: 10%; /* Размер иконки в процентах от родительского элемента */
-    height: auto;
-    min-width: 4px; /* Минимальная ширина иконки */
-    min-height: 4px; /* Минимальная высота иконки */
+.icon {
+    width: 3vh; /* Размер иконки в процентах от родительского элемента */
     filter: invert(0) sepia(0) saturate(0) hue-rotate(0deg); /* Изначальные стили для иконки */
     transition: filter 0.3s ease;
+    margin-right: 5%;
 }
 
 
 .site_bar_menu_buttons:active img {
     filter: invert(1) sepia(1) saturate(5) hue-rotate(180deg); /* При нажатии иконка меняет цвет */
-}
-.site_bar_menu_buttons.active {
-    background-color: #87CEEB; /* Зеленый цвет для активной кнопки */
-    color: white; /* Белый текст */
 }

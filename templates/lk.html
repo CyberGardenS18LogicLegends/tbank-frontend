@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" href="/static/css/lk.css">
+    <link rel="stylesheet" href="/static/css/styles_main.css">
+</head>
+<body>
+<header>
+    <div class="header_t_icone">
+        <img src="/static/images/logo_white.svg" style="width: 50%;">
+    </div>
+    <div class="header_other">
+        <form class="search-container">
+            <button class="search-container-but"><img class="search-container-img" src="/static/images/loupe-search.svg"></button>
+            <input type="text" placeholder="Поиск">
+        </form>
+
+        <div class="notification-bell">
+            <button class="bell-btn"><img src="/static/images/bell-search.svg" alt="Уведомления"></button>
+        </div>
+        <a class="user">
+            <img src="/static/images/dicapro.jpg" alt="User Avatar" class="user_avatar_img" />
+            <span id="responsive-text" class="avatar_name">Dicaprio</span>
+        </a>
+    </div>
+</header>
+<main>
+    <div class="sidebar">
+        <ul class="site_bar_menu_elements">
+            <li>
+                <button onclick="window.location ='http://localhost:63342/T-finance-main/templates/home_page.html' " class="site_bar_menu_buttons" onclick="goToPage('/home', this)">
+                    <img src="/static/images/home-icon.svg" alt="Главная" class="icon">Главная страница
+                </button>
+            </li>
+            <li>
+                <button class="site_bar_menu_buttons" onclick="goToPage('http://localhost:63342/T-finance-main/templates/expenses.html', this)">
+                    <img src="/static/images/rashod.svg" alt="Расходы" class="icon">Расходы
+                </button>
+            </li>
+            <li>
+                <button class="site_bar_menu_buttons" onclick="goToPage('http://localhost:63342/T-finance-main/templates/income.html', this)">
+                    <img src="/static/images/dohod.svg" alt="Доходы" class="icon">Доходы
+                </button>
+            </li>
+            <li>
+                <button class="site_bar_menu_buttons" onclick="goToPage('http://localhost:63342/T-finance-main/templates/rec.html', this)">
+                    <img src="/static/images/recomends.svg" alt="Рекомендации" class="icon">Рекомендации
+                </button>
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="lk_title">
+            <img class="lk_img" src="/static/images/dicapro.jpg">
+            <p class="lk_name">Name</p>
+            <div class="lk_balance">
+                <p class="lk_balance_text">Баланс</p>
+                <p class="lk_balance_text">14000,00 р</p>
+            </div>
+            <p class="lk_settings_text">Настройки профиля</p>
+            <div class="lk_settings">
+                <button class="lk_settings_button">
+                    <p class="lk-but-txt">Сменить пароль</p>
+                    <img src="/static/images/lk_btn.svg" alt="Icon" class="lk-icon">
+                </button>
+                <button class="lk_settings_button">
+                    <p class="lk-but-txt">Сменить никнейм</p>
+                    <img src="/static/images/lk_btn.svg" alt="Icon" class="lk-icon">
+                </button>
+                <button class="lk_settings_button">
+                    <p class="lk-but-txt">Сменить аватар</p>
+                    <img src="/static/images/lk_btn.svg" alt="Icon" class="lk-icon">
+                </button>
+                <button class="lk_settings_button">
+                    <p class="lk-but-txt">Поддержка</p>
+                    <img src="/static/images/lk_btn.svg" alt="Icon" class="lk-icon">
+                </button>
+                <button class="lk_settings_button">
+                    <p class="lk-but-txt">Выйти</p>
+                    <img src="/static/images/lk-exit.svg" alt="Icon" class="lk-icon-exit">
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,134 @@
+@font-face {
+    font-family: 'Comme-Black';
+    src: url('/static/fonts/Comme-Black.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat-Medium';
+    src: url('/static/fonts/Montserrat-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat-SemiBold';
+    src: url('/static/fonts/Montserrat-SemiBold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.content_lk {
+    background-color: #000000;
+}
+
+.lk_title {
+    width: 30%;
+    height: 80%;
+    background-color: #333333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+}
+
+.lk_img {
+    margin-top: 4%;
+    width: 25%;
+    height: 20%;
+    border-radius: 50%;
+    border: 1px solid #ffffff;
+}
+
+.lk_name {
+    margin-top: 1%;
+    font-family: 'Comme-Black', sans-serif;
+    font-weight: 300;
+    font-size: 2vh;
+    color: #ffffff;
+}
+
+.lk_balance {
+    height: 10%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #616161;
+    border-radius: 5px;
+    align-items: center;
+    margin-top: 8%;
+}
+
+.lk_balance_text {
+    font-family: 'Comme-Black', sans-serif;
+    font-weight: 300;
+    font-size: 2vh;
+    color: #ffffff;
+    margin-right: 4%;
+    margin-left: 4%;
+}
+
+.lk_settings_text {
+    font-family: 'Comme-Black', sans-serif;
+    font-weight: 300;
+    font-size: 2vh;
+    color: #ffffff;
+    align-self: start;
+    margin-left: 5%;
+    margin-top: 4%;
+}
+
+.lk_settings {
+    margin-top: 4%;
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+    margin-left: 5%;
+}
+
+.lk_settings_button {
+    margin-top: 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 14vw;
+    height: 4vh;
+    background-color: #616161;
+    border-radius: 10px;
+    padding: 0 10px; /* Отступы для улучшения визуализации */
+    cursor: pointer; /* Курсор в виде указателя при наведении */
+    border: none; /* Убрана обводка */
+    transition: all 0.3s ease; /* Плавный переход для всех изменений */
+}
+
+.lk_settings_button:hover {
+    background-color: #FFDD2D; /* Изменение фона на желтый при наведении */
+    transform: scale(1.1); /* Легкое увеличение кнопки */
+}
+
+.lk_settings_button:active {
+    background-color: #FFB600; /* Более темный желтый при нажатии */
+    transform: scale(1.05); /* Немного уменьшится при нажатии */
+}
+
+.lk-icon {
+    margin-right: 4%;
+    width: 1vh;
+    height: 2vh;
+}
+
+.lk-icon-exit {
+    margin-right: 4%;
+    width: 2vh;
+    height: 3vh;
+}
+
+.lk-but-txt {
+    font-family: 'Comme-Black', sans-serif;
+    font-weight: 300;
+    color: #ffffff;
+    margin-left: 4%;
+    font-size: 2vh;
+}
