@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Календарь с диапазоном</title>
+    <link rel="stylesheet" href="../static/css/calendar.css">
+</head>
+<body>
+
+    <div class="calendar">
+        <div class="calendar-header">
+            <button class="prev-month" onclick="changeMonth(-1)">&#9664;</button>
+            <h2 id="month-year"></h2>
+            <button class="next-month" onclick="changeMonth(1)">&#9654;</button>
+        </div>
+        
+        <div class="date-range">
+            <p>Дата начала: <span id="start-date">-</span></p>
+            <p>Дата окончания: <span id="end-date">-</span></p>
+        </div>
+
+        <div class="calendar-days">
+            <div class="day-name">Пн</div>
+            <div class="day-name">Вт</div>
+            <div class="day-name">Ср</div>
+            <div class="day-name">Чт</div>
+            <div class="day-name">Пт</div>
+            <div class="day-name">Сб</div>
+            <div class="day-name">Вс</div>
+        </div>
+        <div class="calendar-dates" id="calendar-dates"></div>
+    </div>
+
+</body>
+<script>
+    let currentDate = new Date();
+    let startDate = null;
+    let endDate = null;
+
+    function renderCalendar() {
+        const monthYear = document.getElementById('month-year');
+        const calendarDates = document.getElementById('calendar-dates');
+        calendarDates.innerHTML = '';
+
+        const month = currentDate.getMonth();
+        const year = currentDate.getFullYear();
+
+        const months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+        monthYear.textContent = `${months[month]} ${year}`;
+
+        const firstDayOfMonth = new Date(year, month, 1);
+        const firstDayWeekday = firstDayOfMonth.getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        // Пустые ячейки до первого дня месяца
+        for (let i = 0; i < firstDayWeekday; i++) {
+            const emptyDiv = document.createElement('div');
+            calendarDates.appendChild(emptyDiv);
+        }
+
+        // Заполнение дней месяца
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dayDiv = document.createElement('div');
+            dayDiv.textContent = day;
+            dayDiv.classList.add('date');
+            dayDiv.dataset.date = `${year}-${month + 1}-${day}`;
+
+            // Обработка кликов по датам
+            dayDiv.addEventListener('click', (e) => handleDateClick(e, day, month, year));
+
+            // Выделение выбранного диапазона
+            if (startDate && endDate && isDateInRange(day, month, year)) {
+                dayDiv.classList.add('selected-range');
+            }
+
+            // Выделение начальной и конечной даты
+            if (isStartDate(day, month, year)) {
+                dayDiv.classList.add('selected-start');
+            } 
+            if (isEndDate(day, month, year)) {
+                dayDiv.classList.add('selected-end');
+            }
+
+            calendarDates.appendChild(dayDiv);
+        }
+
+        // Обновляем отображение дат начала и окончания
+        updateDateRangeDisplay();
+    }
+
+    function handleDateClick(event, day, month, year) {
+        const clickedDate = new Date(year, month, day);
+
+        if (!startDate) {
+            // Первый клик — начало периода
+            startDate = clickedDate;
+            event.target.classList.add('selected-start');
+        } else if (!endDate) {
+            // Второй клик — конец периода
+            endDate = clickedDate;
+            event.target.classList.add('selected-end');
+
+            // Если начало и конец определены, выделяем все дни между ними
+            renderCalendar(); // Перерисовываем календарь с выделением диапазона
+        } else {
+            // Если уже выбран диапазон, сбрасываем все
+            startDate = clickedDate;
+            endDate = null;
+            renderCalendar();
+        }
+    }
+
+    function isDateInRange(day, month, year) {
+        const currentDate = new Date(year, month, day);
+        return currentDate >= startDate && currentDate <= endDate;
+    }
+
+    function isStartDate(day, month, year) {
+        const currentDate = new Date(year, month, day);
+        return startDate && currentDate.getTime() === startDate.getTime();
+    }
+
+    function isEndDate(day, month, year) {
+        const currentDate = new Date(year, month, day);
+        return endDate && currentDate.getTime() === endDate.getTime();
+    }
+
+    function changeMonth(offset) {
+        currentDate.setMonth(currentDate.getMonth() + offset);
+        renderCalendar();
+    }
+
+    function updateDateRangeDisplay() {
+        const startDateElement = document.getElementById('start-date');
+        const endDateElement = document.getElementById('end-date');
+
+        if (startDate && endDate) {
+            const startFormatted = formatDate(startDate);
+            const endFormatted = formatDate(endDate);
+            startDateElement.textContent = startFormatted;
+            endDateElement.textContent = endFormatted;
+        } else {
+            startDateElement.textContent = '-';
+            endDateElement.textContent = '-';
+        }
+    }
+
+    function formatDate(date) {
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}:${month}:${year}`;
+    }
+
+    renderCalendar();
+
+</script>
+</html>

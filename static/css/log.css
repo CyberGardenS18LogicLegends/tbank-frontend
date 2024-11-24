@@ -1,0 +1,321 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+@font-face {
+    font-family: 'Comme-Black';
+    src: url('/static/fonts/Comme-Black.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat-Medium';
+    src: url('/static/fonts/Montserrat-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat-SemiBold';
+    src: url('/static/fonts/Montserrat-SemiBold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --Yellow_fonts: #FFDD2D;
+    --Grey_fon: #E8E8E8;
+    --Grey_field: #2F3135;
+    --White_font: #F5F7FA;
+    --Grey_font: #333333;
+}
+
+.common {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.container {
+    background-color: var(--Grey_fon);
+    border: 3px solid var(--Yellow_fonts);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    gap: 235px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 924px;
+    width: 1420px;
+    overflow: auto; /* Добавляем прокрутку, если содержимое не помещается */
+}
+
+.content_zone_logo {
+    width: 330px;
+    height: 120px;
+}
+
+.content_zone_text {
+    padding-top: 155px;
+    height: 360px;
+    width: 250px;
+    gap: 30px;
+    font-size: 48px;
+    font-family: 'Comme-Black', sans-serif;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.login_form_conteiner {
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 515px;
+    height: 653px;
+    background-color: #1D2024;
+    border-radius: 20px;
+    overflow-y: auto; /* Добавляем вертикальную прокрутку для формы */
+}
+
+.form_title {
+    font-family: 'Montserrat-Medium', sans-serif;
+    font-weight: 500;
+    color: var(--White_font);
+    font-size: 25px;
+}
+
+.content_zone_info {
+    margin-top: -170px;
+}
+
+.form_fields {
+    margin-top: 54px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+input {
+    height: 69px;
+    width: 440px;
+    border-radius: 10px;
+    background-color: var(--Grey_field);
+    padding-left: 18.5px;
+    border: none;
+    color: var(--White_font);
+    font-size: 18px;
+}
+
+input::placeholder {
+    color: var(--White_font);
+    font-family: 'Montserrat-Medium', sans-serif;
+    font-size: 17px;
+}
+
+.form_buttons {
+    margin-top: 37px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+}
+
+.button_login_register {
+    display: block;
+    height: 65px;
+    width: 439px;
+    border-radius: 20px;
+    background-color: var(--Yellow_fonts);
+    font-size: 17px;
+    color: var(--Grey_font);
+    font-family: 'Montserrat-SemiBold', sans-serif;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button_login_register:hover {
+    background-color: var(--Grey_field);
+    color: var(--Yellow_fonts);
+    transform: scale(1.05);
+}
+
+.button_login_register:active {
+    transform: scale(0.95);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: var(--Yellow_fonts);
+    color: var(--Grey_font);
+}
+
+.form_buttons_ili {
+    font-family: 'Montserrat-Medium', sans-serif;
+    font-size: 13px;
+    color: var(--White_font);
+}
+
+.button_T-ID {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 65px;
+    width: 439px;
+    border-radius: 20px;
+    background-color: var(--Grey_field);
+    font-size: 17px;
+    color: var(--White_font);
+    font-family: 'Montserrat-Medium', sans-serif;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button_T-ID:hover {
+    background-color: var(--Yellow_fonts);
+    color: var(--Grey_font);
+}
+
+.button_T-ID:active {
+    background-color: var(--Grey_field);
+    color: var(--White_font);
+}
+
+.button_T-ID .button-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    margin-top: 2px;
+    transition: transform 0.3s ease;
+}
+
+.button_T-ID:hover .button-icon {
+    transform: rotate(10deg);
+}
+
+.form_no_login {
+    display: flex;
+    margin-top: 39px;
+    gap: 4px;
+    font-family: 'Montserrat-Medium', sans-serif;
+    font-size: 15px;
+}
+
+.form_no_yes_login_reg_vopr {
+    color: var(--White_font);
+}
+
+.form_no_yes_login_reg {
+    color: var(--Yellow_fonts);
+}
+
+.reg_form_conteiner {
+    padding-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 515px;
+    height: 653px;
+    background-color: #1D2024;
+    border-radius: 20px;
+}
+
+.reg_form_fields {
+    margin-top: 33px;
+    display: flex;
+    flex-direction: column;
+    gap: 29px;
+}
+
+.form_yes_login {
+    display: flex;
+    margin-top: 18px;
+    gap: 4px;
+    font-family: 'Montserrat-Medium', sans-serif;
+    font-size: 15px;
+}
+
+/* Медиазапросы для адаптивности */
+
+/* Для экранов шириной до 1200px */
+@media (max-width: 1200px) {
+    .container {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: flex-start;
+    }
+
+    .content_zone_text {
+        font-size: 36px;
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    .login_form_conteiner, .reg_form_conteiner {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        overflow-y: auto; /* Добавляем вертикальную прокрутку для форм */
+    }
+
+    .form_fields input {
+        width: 100%;
+    }
+
+    .form_buttons .button_login_register,
+    .form_buttons .button_T-ID {
+        width: 100%;
+    }
+}
+
+/* Для экранов шириной до 768px (например, телефоны) */
+@media (max-width: 768px) {
+    .content_zone_text {
+        font-size: 28px;
+    }
+
+    .container {
+        gap: 15px;
+    }
+
+    .content_zone_logo {
+        width: 200px;
+    }
+
+    .login_form_conteiner, .reg_form_conteiner {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        overflow-y: auto;
+    }
+
+    .form_fields input {
+        width: 100%;
+    }
+
+    .form_buttons .button_login_register,
+    .form_buttons .button_T-ID {
+        width: 100%;
+    }
+
+    .form_no_login, .form_yes_login {
+        font-size: 12px;
+    }
+}

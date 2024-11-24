@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рекомендации</title>
+    <link rel="stylesheet" href="../static/css/styles_main.css">
+    <link rel="stylesheet" href="../static/css/rec.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="empty"></div>
+<header>
+    <div class="header_t_icone">
+        <img src="../static/images/logo_white.svg" style="width: 50%;">
+    </div>
+    <div class="header_other">
+        <form class="search-container">
+            <button class="search-container-but"><img class="search-container-img" src="../static/images/loupe-search.svg"></button>
+            <input type="text" placeholder="Поиск">
+        </form>
+
+        <div class="notification-bell">
+            <button class="bell-btn"><img src="../static/images/bell-search.svg" alt="Уведомления"></button>
+        </div>
+        <a class="user">
+            <img src="../static/images/dicapro.jpg" alt="User Avatar" class="user_avatar_img" />
+            <span id="responsive-text" class="avatar_name">Dicaprio</span>
+        </a>
+    </div>
+</header>
+<main>
+    <div class="sidebar">
+        <ul class="site_bar_menu_elements">
+            <li>
+                <button class="site_bar_menu_buttons" data-url="http://localhost:63342/T-finance-main/templates/home_page.html">
+                    <img src="../static/images/home-icon.svg" alt="Главная" class="icon">Главная страница
+                </button>
+            </li>
+            <li>
+                <button class="site_bar_menu_buttons" data-url="http://localhost:63342/T-finance-main/templates/expenses.html">
+                    <img src="../static/images/rashod.svg" alt="Расходы" class="icon">Расходы
+                </button>
+            </li>
+            <li>
+                <button class="site_bar_menu_buttons" data-url="http://localhost:63342/T-finance-main/templates/income.html">
+                    <img src="../static/images/dohod.svg" alt="Доходы" class="icon">Доходы
+                </button>
+            </li>
+            <li>
+                <button class="site_bar_menu_buttons" data-url="http://localhost:63342/T-finance-main/templates/rec.html">
+                    <img src="../static/images/recomends.svg" alt="Рекомендации" class="icon">Рекомендации
+                </button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="rec_container">
+            <p class="helper">Помощник</p>
+            <div class="dialog" id="dialog">
+                <div id="messages">
+                    <!-- Сообщения будут здесь -->
+                </div>
+                <div class="input-container">
+                    <input type="text" id="messageInput" class="message-input" placeholder="Введите сообщение...">
+                    <button class="send-btn" id="send-btn">
+                        <img class="send-btn-img" src="../static/images/Send.svg" alt="Send">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    // Функция для отправки сообщения
+    function sendMessage() {
+        var messageInput = document.getElementById('messageInput');
+        var dialog = document.getElementById('messages');
+
+        // Проверка, чтобы не отправить пустое сообщение
+        if (messageInput.value.trim() === "") {
+            return;
+        }
+
+        // Создаем сообщение пользователя
+        var messageDiv = document.createElement('p');
+        messageDiv.classList.add('message', 'sent');
+        messageDiv.innerHTML = messageInput.value + '<span class="user-emoji">🧑</span>'; // Силуэт человека
+
+        // Добавляем отправленное сообщение в диалог
+        dialog.appendChild(messageDiv);
+
+        // Очистка поля ввода
+        messageInput.value = '';
+
+        // Ответ от помощника (без задержки)
+        var responseDiv = document.createElement('p');
+        responseDiv.classList.add('message', 'received');
+        responseDiv.innerHTML = '<span class="emoji">🤖</span> Ответ от помощника';
+
+        // Добавляем ответ в диалог
+        dialog.appendChild(responseDiv);
+
+        // Прокрутка к последнему сообщению
+        dialog.scrollTop = dialog.scrollHeight;
+    }
+
+    // Обработчик нажатия на кнопку отправки
+    const button = document.getElementById('send-btn');
+    button.addEventListener('click', sendMessage);
+
+    // Обработчик нажатия клавиши Enter
+    const messageInput = document.getElementById('messageInput');
+    messageInput.addEventListener('keydown', function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();  // Предотвращаем действие по умолчанию (например, отправку формы)
+            sendMessage();  // Вызываем функцию отправки сообщения
+        }
+    });
+
+    // Функция для перехода между страницами с изменением активной кнопки
+    function goToPage(url, button) {
+        // Удаляем класс 'active' с других кнопок
+        const buttons = document.querySelectorAll('.site_bar_menu_buttons');
+        buttons.forEach(btn => btn.classList.remove('active'));
+
+        // Добавляем класс 'active' на текущую кнопку
+        button.classList.add('active');
+
+        // Переход на страницу
+        window.location.href = url; // Переход через полный путь
+    }
+
+    // Для выделения активной кнопки при загрузке
+    document.addEventListener("DOMContentLoaded", () => {
+        const currentUrl = window.location.pathname; // Текущий URL
+        const buttons = document.querySelectorAll('.site_bar_menu_buttons');
+
+        buttons.forEach(button => {
+            const link = button.getAttribute('data-url'); // Используем data-url вместо onclick
+            if (currentUrl === link) {
+                button.classList.add('active'); // Добавляем класс 'active' на текущую кнопку
+            }
+
+            // Добавляем обработчик событий для каждой кнопки
+            button.addEventListener('click', () => {
+                goToPage(link, button);
+            });
+        });
+    });
+</script>
+</body>
+</html>
